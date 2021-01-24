@@ -3,7 +3,7 @@ from search import Craigslist
 from sheets import Spreadsheet
 
 SPREADSHEET_NAME = "Housing (Automated)"
-WORKSHEET_NAME = "Housing-RAW"
+WORKSHEET_NAME = "Craigslist-RAW"
 sheet = Spreadsheet(SPREADSHEET_NAME)
 
 
