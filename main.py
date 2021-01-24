@@ -1,4 +1,5 @@
 from sys import exit
+import utils
 from search import Craigslist
 from sheets import Spreadsheet
 
@@ -38,6 +39,11 @@ def generate_sheet_data(search_results, prev_listing_ids):
         if is_in_dc(result['url']):
             if is_in_neighborhood(result['where']) != True:
                 if not result['id'] in prev_listing_ids: # remove duplicates
+
+                        # convert geotag tuple to string
+                        geotag_string = utils.tuple_to_string(result['geotag'])
+                        result['geotag'] = geotag_string
+
                         row = list(result.values())
                         sheet_data.append(row)
 
@@ -85,8 +91,8 @@ def main():
         'laundry': 'w/d in unit',
         'parking': ['carport', 'attached garage', 'detached garage', 'off-street parking', 'street parking']
         }
-    sort_by = None # "price_asc", "price_desc"
-    geotagged = False # TODO: enhancement: make the geotagging work with Sheets
+    sort_by = "newest" # "price_asc", "price_desc"
+    geotagged = True
 
     # Perform search
     results = search_craigslist(site, area, filters, sort_by, geotagged)
