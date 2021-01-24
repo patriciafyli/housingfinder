@@ -35,15 +35,13 @@ def generate_sheet_data(search_results, prev_listing_ids):
             columns = list(result.keys())
             sheet_data.append(columns)
    
-        if not result['id'] in prev_listing_ids: # remove duplicates
-            
-            if is_in_dc(result['url']):
+        if is_in_dc(result['url']):
+            if is_in_neighborhood(result['where']) != True:
+                if not result['id'] in prev_listing_ids: # remove duplicates
+                        row = list(result.values())
+                        sheet_data.append(row)
 
-                if is_in_neighborhood(result['where']) != True: # filter results by neighborhood
-                    row = list(result.values())
-                    sheet_data.append(row)
-
-        latest_listing_ids.append(result['id'])
+                latest_listing_ids.append(result['id'])
 
     delete_expired_listings(latest_listing_ids, prev_listing_ids)
 
@@ -59,7 +57,7 @@ def is_in_neighborhood(where_col):
     """Returns True if the listing is in certain neighborhoods
     """
     if where_col:
-        unwanted_neighborhoods = ['Petworth', 'Trinidad', 'Navy Yard', 'Mount Rainier', 'Van Ness'] # TODO: enhancement: NLP processing to standardize n-grams
+        unwanted_neighborhoods = ['Petworth', 'Trinidad', 'Navy Yard', 'Mount Rainier', 'Van Ness', 'Anacostia'] # TODO: enhancement: NLP processing to standardize n-grams
 
         for neighborhood in unwanted_neighborhoods:
             if neighborhood in where_col:
