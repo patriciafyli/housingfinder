@@ -1,7 +1,7 @@
 class GoogleSheetsConfig:
 
     def __init__(self):
-        self.CLIENT_SECRETS_FILE = "/Users/pli/Documents/credentials.json"
+        self.CLIENT_SECRETS_FILE = "/Users/pli/Documents/projects/housingfinder/credentials.json"
         self.TOKEN_PICKLE = "token.pickle"
 
         # Allows read/write access to the user's sheets and their properties.

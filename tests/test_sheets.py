@@ -13,14 +13,14 @@ class TestGoogleSheets:
 
         return sheets
 
-    def test_read(self, sheets):
-        """Validate that a sheet can be read
-        """
-        spreadsheet_id = "1UfCp7ZucZ5RKJOVRBDQu7S-upFLIQGNXyxUsdavkFiQ" # Housing (Automated)
-        spreadsheet_range = "Test"
+    # def test_read(self, sheets):
+    #     """Validate that a sheet can be read
+    #     """
+    #     spreadsheet_id = "1UfCp7ZucZ5RKJOVRBDQu7S-upFLIQGNXyxUsdavkFiQ" # Housing (Automated)
+    #     spreadsheet_range = "Test"
 
-        values = sheets.read(spreadsheet_id, spreadsheet_range)
-        # TODO: use a mock client
+    #     values = sheets.read(spreadsheet_id, spreadsheet_range)
+    #     # TODO: use a mock client
 
     def test_append(self, sheets):
         """Validate that a sheet can be appended to
@@ -51,3 +51,19 @@ class TestGoogleSheets:
         response = sheets.update(spreadsheet_id, value_input_option, spreadsheet_range, body)
         print(response)
         # TODO: use a mock client
+
+    def test_read_column(self, sheets):
+        """Validate that column values can be read
+        """
+        spreadsheet_name = "Housing (Automated)"
+        worksheet_name = "Test"
+        index = 1
+        values = sheets.read_column(spreadsheet_name, worksheet_name, index)
+
+        print(values) # TODO: mock it
+
+    def test_append_gc(self, sheets):
+        sheet = sheets.gc.open("Housing (Automated)")
+
+    def test_delete_gc(self, sheets):
+        pass
