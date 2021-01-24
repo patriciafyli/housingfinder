@@ -16,16 +16,16 @@ class TestGoogleSheets:
     def test_read(self, sheets):
         """Validate that a sheet can be read
         """
-        spreadsheet_id = "1UfCp7ZucZ5RKJOVRBDQu7S-upFLIQGNXyxUsdavkFiQ" # HousingTest
+        spreadsheet_id = "1UfCp7ZucZ5RKJOVRBDQu7S-upFLIQGNXyxUsdavkFiQ" # Housing (Automated)
         spreadsheet_range = "Test"
 
-        sheets.read(spreadsheet_id, spreadsheet_range)
+        values = sheets.read(spreadsheet_id, spreadsheet_range)
         # TODO: use a mock client
 
-    def test_write(self, sheets):
-        """Validate that a sheet can be written to
+    def test_append(self, sheets):
+        """Validate that a sheet can be appended to
         """
-        spreadsheet_id = "1UfCp7ZucZ5RKJOVRBDQu7S-upFLIQGNXyxUsdavkFiQ" # HousingTest
+        spreadsheet_id = "1UfCp7ZucZ5RKJOVRBDQu7S-upFLIQGNXyxUsdavkFiQ" # Housing (Automated)
         value_input_option = "RAW"
         spreadsheet_range = "Test"
         body = dict(
@@ -33,6 +33,21 @@ class TestGoogleSheets:
             values=[[1, 2, 3], [1, 2, 3], [1, 2, 3]] # first list is columns
         )
 
-        response = sheets.write(spreadsheet_id, value_input_option, spreadsheet_range, body)
+        response = sheets.append(spreadsheet_id, value_input_option, spreadsheet_range, body)
+        print(response)
+        # TODO: use a mock client
+
+    def test_update(self, sheets):
+        """Validate that a sheet can be updated
+        """
+        spreadsheet_id = "1UfCp7ZucZ5RKJOVRBDQu7S-upFLIQGNXyxUsdavkFiQ" # Housing (Automated)
+        value_input_option = "RAW"
+        spreadsheet_range = "Test"
+        body = dict(
+            majorDimension='ROWS',
+            values=[[1, 2, 3], [1, 2, 3], [1, 2, 3]] # first list is columns
+        )
+
+        response = sheets.update(spreadsheet_id, value_input_option, spreadsheet_range, body)
         print(response)
         # TODO: use a mock client

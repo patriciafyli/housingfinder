@@ -31,23 +31,34 @@ class GoogleSheets:
                                     range=spreadsheet_range).execute()
         values = result.get('values', [])
 
-        if not values:
-            print('No data found.')
-        else:
-            for row in values:
-                print(row)
+        return values
 
-    def write(self, spreadsheet_id, value_input_option, spreadsheet_range, body):
-        """Writes data to an existing sheet
+    def append(self, spreadsheet_id, value_input_option, spreadsheet_range, body):
+        """Append rows to an existing sheet
         """
-        print(f"Writing to Google Sheet {spreadsheet_id}...")
+        print(f"Appending to Google Sheet {spreadsheet_id}...")
+
+        try:
+            response = self.sheets.values().append(spreadsheetId=spreadsheet_id,
+                                                valueInputOption=value_input_option,
+                                                range=spreadsheet_range,
+                                                body=body).execute()
+            print("Successfully appended to Google Sheet")
+            return response
+        except Exception as e:
+            print(e)
+
+    def update(self, spreadsheet_id, value_input_option, spreadsheet_range, body):
+        """Updates data in an existing sheet
+        """
+        print(f"Updating Google Sheet {spreadsheet_id}...")
 
         try:
             response = self.sheets.values().update(spreadsheetId=spreadsheet_id,
                                                 valueInputOption=value_input_option,
                                                 range=spreadsheet_range,
                                                 body=body).execute()
-            print("Successfully wrote to Google Sheets")
+            print("Successfully updated Google Sheet")
             return response
         except Exception as e:
             print(e)
