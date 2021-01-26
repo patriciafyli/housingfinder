@@ -29,7 +29,7 @@ class Spreadsheet:
         return values
 
     def find_cell(self, worksheet_name, search_term):
-        """
+        """Locates a cell in a worksheet
         """
         worksheet = self.spreadsheet.worksheet(worksheet_name)
         cell = worksheet.find(search_term)
@@ -37,7 +37,7 @@ class Spreadsheet:
         return cell
 
     def delete_row(self, worksheet_name, index):
-        """
+        """Deletes a row in a worksheet
         """
         worksheet = self.spreadsheet.worksheet(worksheet_name)
         response = worksheet.delete_row(index)
@@ -45,7 +45,7 @@ class Spreadsheet:
         return response
 
     def append_rows(self, worksheet_name, values, value_input_option):
-        """
+        """Appends rows to a worksheet
         """
         worksheet = self.spreadsheet.worksheet(worksheet_name)
         response = worksheet.append_rows(values, value_input_option)
@@ -53,7 +53,7 @@ class Spreadsheet:
         return response
 
 
-# UNUSED
+# DEPRECATED
 # import logging
 # import os.path
 # import pickle

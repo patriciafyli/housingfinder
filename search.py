@@ -3,7 +3,7 @@ from craigslist import CraigslistHousing
 
 class Craigslist:
 
-    def search(self, site, area, category=None, filters=None, sort_by="newest", geotagged=True):
+    def search(self, site, area, category=None, filters=None, sort_by=None, geotagged=None):
         """Performs a Craigslist search
         """
         housing = self._build(site, area, category, filters)
@@ -28,7 +28,3 @@ class Craigslist:
         """
         for result in results:
             print(result)
-
-
-class Zillow:
-    pass

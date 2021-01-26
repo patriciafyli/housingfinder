@@ -12,7 +12,6 @@ def search_craigslist(site, area, filters, sort_by=None, geotagged=None):
     craigslist = Craigslist()
 
     results = craigslist.search(site=site, area=area, filters=filters, sort_by=sort_by, geotagged=geotagged)
-    # craigslist.print_results(results)
 
     return results
 
