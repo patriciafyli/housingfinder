@@ -1,11 +1,12 @@
 from sys import exit
 import utils
+from config import GoogleSheetsConfig
 from search import Craigslist
 from sheets import Spreadsheet
 
-SPREADSHEET_NAME = "Housing (Automated)"
-WORKSHEET_NAME = "Craigslist-RAW"
-sheet = Spreadsheet(SPREADSHEET_NAME)
+config = GoogleSheetsConfig()
+sheet = Spreadsheet(config.SPREADSHEET_NAME)
+WORKSHEET_NAME = config.WORKSHEET_NAME
 
 
 def search_craigslist(site, area, filters, sort_by=None, geotagged=None):
@@ -74,7 +75,7 @@ def delete_expired_listings(latest_listing_ids, prev_listing_ids):
     for id in prev_listing_ids:
         if id not in latest_listing_ids:
             cell = sheet.find_cell(WORKSHEET_NAME, id)
-            sheet.delete_row(WORKSHEET_NAME, cell.row)
+            sheet.delete_rows(WORKSHEET_NAME, cell.row)
 
 def main():
 
