@@ -22,9 +22,3 @@ class TestCraigslist:
         craigslist.search(site, area, category, filters)
 
         mock_housing.get_results.assert_called_once()
-
-
-    def test_search_default(self):
-        """Test to validate that Craigslist can be searched with default category and filters
-        """
-        pass
