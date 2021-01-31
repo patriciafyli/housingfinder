@@ -39,9 +39,7 @@ Activate the virtual environment and run the program:
 
 # Testing
 
-Unit tests are written for pytest. They are not independent and require the `credentials.json` file to be set up as specified above.
-
-Tests can be run with the following command from the root folder:
+Unit tests are written for pytest. They do not hit the Google API. They be run with the following command from the root folder:
 
 > pytest -s
 
