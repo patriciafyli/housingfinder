@@ -1,5 +1,7 @@
 from craigslist import CraigslistHousing
 
+# CraigslistHousing.show_filters()
+
 
 class Craigslist:
 

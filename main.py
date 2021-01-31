@@ -87,6 +87,7 @@ def main():
         'max_bedrooms': 2,
         'min_bathrooms': 2,
         'max_bathrooms': 2,
+        'min_ft2': 900,
         'max_price': 2800,
         'laundry': 'w/d in unit',
         'parking': ['carport', 'attached garage', 'detached garage', 'off-street parking', 'street parking']
